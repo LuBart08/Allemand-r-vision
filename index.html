@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dashboard Allemand : Der Krieg</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --accent: #38bdf8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden; /* Empêche le scroll global */
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 15px;
+            text-align: center;
+            background: rgba(30, 41, 59, 0.5);
+            border-bottom: 1px solid #334155;
+        }
+
+        header h1 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Navigation par onglets */
+        .tabs {
+            display: flex;
+            background: #1e293b;
+            padding: 5px;
+            gap: 5px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 5px;
+            border: none;
+            background: none;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            text-transform: uppercase;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Zones de contenu */
+        .content-area {
+            flex: 1;
+            position: relative;
+            padding: 15px;
+        }
+
+        .tab-content {
+            display: none;
+            height: 100%;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Grilles compactes */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .item {
+            background: var(--card);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .item .de { display: block; font-weight: bold; font-size: 0.95rem; color: var(--accent); }
+        .item .fr { display: block; font-size: 0.75rem; color: #94a3b8; margin-top: 2px; }
+
+        /* Style spécifique pour les boîtes historiques */
+        .history-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .history-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); border-bottom: 1px solid #334155; padding-bottom: 5px; }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            padding: 6px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        /* Tableau */
+        table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+        th { text-align: left; color: #94a3b8; padding-bottom: 10px; }
+        td { padding: 8px 0; border-top: 1px solid #334155; }
+        .badge { background: #0369a1; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🇩🇪 Der Krieg - Dashboard</h1>
+</header>
+
+<div class="tabs">
+    <button class="tab-btn active" onclick="openTab('base')">Base</button>
+    <button class="tab-btn" onclick="openTab('histo')">Époques</button>
+    <button class="tab-btn" onclick="openTab('table')">Tableau</button>
+</div>
+
+<div class="content-area">
+    <!-- ONGLET 1: BASE -->
+    <div id="base" class="tab-content active">
+        <div class="grid">
+            <div class="item"><span class="de">Weltkrieg</span><span class="fr">Guerre mondiale</span></div>
+            <div class="item"><span class="de">Die Schlacht</span><span class="fr">La bataille</span></div>
+            <div class="item"><span class="de">Der Feldzug</span><span class="fr">La campagne</span></div>
+            <div class="item"><span class="de">Sowjetunion</span><span class="fr">U.R.S.S</span></div>
+            <div class="item"><span class="de">Alliierten</span><span class="fr">Les Alliés</span></div>
+            <div class="item"><span class="de">Der Soldat</span><span class="fr">Le soldat</span></div>
+            <div class="item"><span class="de">Zerstören</span><span class="fr">Détruire</span></div>
+            <div class="item"><span class="de">Kapitulation</span><span class="fr">Capitulation</span></div>
+            <div class="item"><span class="de">Besetzung</span><span class="fr">Occupation</span></div>
+            <div class="item"><span class="de">Die Toten</span><span class="fr">Les morts</span></div>
+            <div class="item"><span class="de">Angreifen</span><span class="fr">Attaquer</span></div>
+            <div class="item"><span class="de">Ende / Beginn</span><span class="fr">Fin / Début</span></div>
+        </div>
+    </div>
+
+    <!-- ONGLET 2: HISTOIRE -->
+    <div id="histo" class="tab-content">
+        <div class="history-card" style="border-top: 4px solid #f59e0b;">
+            <h3>📜 1ère GM</h3>
+            <div class="row"><span>Der Vertrag</span><b>Le traité</b></div>
+            <div class="row"><span>Schuldig</span><b>Coupable</b></div>
+            <div class="row"><span>Die Strafe</span><b>La sanction</b></div>
+            <div class="row"><span>Abrüsten</span><b>Désarmer</b></div>
+        </div>
+        <div class="history-card" style="border-top: 4px solid #ef4444;">
+            <h3>🎖️ 2ème GM</h3>
+            <div class="row"><span>Kanzler</span><b>Chancelier</b></div>
+            <div class="row"><span>Das Gesetz</span><b>La loi</b></div>
+            <div class="row"><span>Der Jude</span><b>Le juif</b></div>
+            <div class="row"><span>Ereignis</span><b>Événement</b></div>
+        </div>
+    </div>
+
+    <!-- ONGLET 3: TABLEAU -->
+    <div id="table" class="tab-content">
+        <div class="history-card">
+            <table>
+                <thead>
+                    <tr><th>Nomen</th><th>Adjektiv</th><th>Land</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Der Jude</td><td><span class="badge">jüdisch</span></td><td>—</td></tr>
+                    <tr><td>Sowjet</td><td><span class="badge">sowjetisch</span></td><td>Sowjetunion</td></tr>
+                    <tr><td>Nazi...</td><td><span class="badge">national...</span></td><td>NS-Staat</td></tr>
+                    <tr><td>Deutsche</td><td><span class="badge">deutsch</span></td><td>Deutschland</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(tabName) {
+        var i;
+        var x = document.getElementsByClassName("tab-content");
+        var btns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+            btns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>
+
